@@ -35,14 +35,7 @@ jobs:
           path: plasoSmallTool_windows_x64.zip
 
   build-macos:
-    strategy:
-      matrix:
-        include:
-          - arch: x86_64
-            runner: macos-13
-          - arch: arm64
-            runner: macos-latest
-    runs-on: ${{ matrix.runner }}
+    runs-on: macos-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -61,13 +54,13 @@ jobs:
       - name: Package artifacts
         run: |
           cd build/macos/Build/Products/Release
-          zip -r "${{ github.workspace }}/plasoSmallTool_macos_${{ matrix.arch }}.zip" "plasoSmallTool.app"
+          zip -r "${{ github.workspace }}/plasoSmallTool_macos_arm64.zip" "plasoSmallTool.app"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: plasoSmallTool_macos_${{ matrix.arch }}
-          path: plasoSmallTool_macos_${{ matrix.arch }}.zip
+          name: plasoSmallTool_macos_arm64
+          path: plasoSmallTool_macos_arm64.zip
 
   release:
     needs: [build-windows, build-macos]
@@ -82,5 +75,4 @@ jobs:
         with:
           files: |
             plasoSmallTool_windows_x64/plasoSmallTool_windows_x64.zip
-            plasoSmallTool_macos_x86_64/plasoSmallTool_macos_x86_64.zip
             plasoSmallTool_macos_arm64/plasoSmallTool_macos_arm64.zip
