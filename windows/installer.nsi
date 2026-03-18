@@ -2,7 +2,7 @@
 Unicode True
 
 !define APP_NAME "plasoSmallTool"
-!define APP_VERSION "$%APP_VERSION%"
+; APP_VERSION 由命令行 /DAPP_VERSION=x.x.x 传入
 !define APP_PUBLISHER "plaso"
 !define APP_URL "https://github.com/liangzhaoliang95/plasoSmallTool"
 !define APP_EXE "plasoSmallTool.exe"
