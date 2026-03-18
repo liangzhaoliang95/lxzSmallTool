@@ -45,10 +45,7 @@ jobs:
       - name: Build NSIS installer
         run: |
           $version = (Select-String -Path pubspec.yaml -Pattern '^version:').Line -replace 'version: ', '' -replace '\+.*', ''
-          $env:APP_VERSION = $version
-          choco install nsis -y
-          cd build\windows\x64\runner
-          makensis /DAPP_VERSION=$version "${{ github.workspace }}\windows\installer.nsi"
+          & "C:\Program Files (x86)\NSIS\makensis.exe" /DAPP_VERSION=$version "${{ github.workspace }}\windows\installer.nsi"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
