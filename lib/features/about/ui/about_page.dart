@@ -1,13 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class AboutPage extends StatelessWidget {
+class AboutPage extends StatefulWidget {
   const AboutPage({super.key});
 
-  static const _version = '1.0.11';
-  static const _buildTime = '2026-03-19';
+  @override
+  State<AboutPage> createState() => _AboutPageState();
+}
+
+class _AboutPageState extends State<AboutPage> {
   static const _author = 'liangzhaoliang95';
   static const _githubUrl = 'https://github.com/liangzhaoliang95/plasoSmallTool';
+
+  String _version = '-';
+
+  @override
+  void initState() {
+    super.initState();
+    PackageInfo.fromPlatform().then((info) {
+      setState(() => _version = info.version);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +37,7 @@ class AboutPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.asset(
-                  'assets/app_icon.png',
-                  width: 80,
-                  height: 80,
-                ),
+                Image.asset('assets/app_icon.png', width: 80, height: 80),
                 const SizedBox(height: 20),
                 Text(
                   '伯索小工具',
@@ -46,7 +56,6 @@ class AboutPage extends StatelessWidget {
                 _InfoCard(
                   items: [
                     _InfoItem(label: '版本', value: _version),
-                    _InfoItem(label: '构建时间', value: _buildTime),
                     _InfoItem(label: '作者', value: _author),
                   ],
                 ),
@@ -130,7 +139,7 @@ class _GithubButton extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: OutlinedButton.icon(
-        onPressed: () => _openUrl(url),
+        onPressed: () => launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication),
         icon: const Icon(Icons.code),
         label: const Text('GitHub 开源地址'),
         style: OutlinedButton.styleFrom(
@@ -139,9 +148,5 @@ class _GithubButton extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  void _openUrl(String url) {
-    launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
   }
 }
