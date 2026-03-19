@@ -1,4 +1,4 @@
-name: plaso_small_tool
+name: lxz_small_tool
 description: "跨平台桌面小工具集"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -66,6 +66,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -113,3 +114,13 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+flutter_launcher_icons:
+  image_path: "assets/app_icon.png"
+  macos:
+    generate: true
+    image_path: "assets/app_icon.png"
+  windows:
+    generate: true
+    image_path: "assets/app_icon.png"
+    icon_size: 48

@@ -9,7 +9,7 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get appTitle => 'Plaso Small Tool';
+  String get appTitle => 'Lxz Small Tool';
 
   @override
   String get appSubtitle => 'Cross-platform desktop toolkit';

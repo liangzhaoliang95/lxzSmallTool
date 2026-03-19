@@ -1,16 +1,16 @@
-; plasoSmallTool NSIS installer script
+; lxzSmallTool NSIS installer script
 Unicode True
 
-!define APP_NAME "plasoSmallTool"
+!define APP_NAME "lxzSmallTool"
 ; APP_VERSION is passed via command line: /DAPP_VERSION=x.x.x
-!define APP_PUBLISHER "plaso"
-!define APP_URL "https://github.com/liangzhaoliang95/plasoSmallTool"
-!define APP_EXE "plasoSmallTool.exe"
+!define APP_PUBLISHER "liangzhaoliang95"
+!define APP_URL "https://github.com/liangzhaoliang95/lxzSmallTool"
+!define APP_EXE "lxzSmallTool.exe"
 !define INSTALL_DIR "$PROGRAMFILES64\${APP_NAME}"
 !define UNINSTALL_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}"
 
 Name "${APP_NAME} ${APP_VERSION}"
-OutFile "${BUILD_DIR}\..\plasoSmallTool_setup.exe"
+OutFile "${BUILD_DIR}\..\lxzSmallTool_setup.exe"
 InstallDir "${INSTALL_DIR}"
 InstallDirRegKey HKLM "${UNINSTALL_KEY}" "InstallLocation"
 RequestExecutionLevel admin

@@ -55,8 +55,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: plasoSmallTool_windows_x64
-          path: build\windows\x64\runner\plasoSmallTool_setup.exe
+          name: lxzSmallTool_windows_x64
+          path: build\windows\x64\runner\lxzSmallTool_setup.exe
 
   build-macos:
     runs-on: macos-latest
@@ -80,23 +80,23 @@ jobs:
         run: |
           brew install create-dmg
           mkdir -p /tmp/dmg_source
-          cp -r "build/macos/Build/Products/Release/plasoSmallTool.app" /tmp/dmg_source/
+          cp -r "build/macos/Build/Products/Release/lxzSmallTool.app" /tmp/dmg_source/
           create-dmg \
-            --volname "plasoSmallTool" \
+            --volname "lxzSmallTool" \
             --window-pos 200 120 \
             --window-size 600 400 \
             --icon-size 100 \
-            --icon "plasoSmallTool.app" 150 185 \
-            --hide-extension "plasoSmallTool.app" \
+            --icon "lxzSmallTool.app" 150 185 \
+            --hide-extension "lxzSmallTool.app" \
             --app-drop-link 450 185 \
-            "plasoSmallTool_macos_arm64.dmg" \
+            "lxzSmallTool_macos_arm64.dmg" \
             "/tmp/dmg_source/"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: plasoSmallTool_macos_arm64
-          path: plasoSmallTool_macos_arm64.dmg
+          name: lxzSmallTool_macos_arm64
+          path: lxzSmallTool_macos_arm64.dmg
 
   release:
     needs: [build-windows, build-macos]
@@ -112,5 +112,5 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            plasoSmallTool_setup.exe
-            plasoSmallTool_macos_arm64.dmg
+            lxzSmallTool_setup.exe
+            lxzSmallTool_macos_arm64.dmg

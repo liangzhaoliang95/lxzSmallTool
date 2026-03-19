@@ -10,7 +10,7 @@ class AboutPage extends ConsumerWidget {
   const AboutPage({super.key});
 
   static const _author = 'liangzhaoliang95';
-  static const _githubUrl = 'https://github.com/liangzhaoliang95/plasoSmallTool';
+  static const _githubUrl = 'https://github.com/liangzhaoliang95/lxzSmallTool';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

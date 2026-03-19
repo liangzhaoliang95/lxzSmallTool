@@ -4,7 +4,7 @@ import '../models/release_info.dart';
 
 class GithubReleaseService {
   static const _apiUrl =
-      'https://api.github.com/repos/liangzhaoliang95/plasoSmallTool/releases/latest';
+      'https://api.github.com/repos/liangzhaoliang95/lxzSmallTool/releases/latest';
 
   Future<ReleaseInfo> fetchLatestRelease() async {
     final response = await http.get(

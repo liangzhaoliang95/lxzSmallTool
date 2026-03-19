@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.plaso" "\0"
-            VALUE "FileDescription", "plasoSmallTool" "\0"
+            VALUE "CompanyName", "liangzhaoliang95" "\0"
+            VALUE "FileDescription", "lxzSmallTool" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "plasoSmallTool" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2026 com.plaso. All rights reserved." "\0"
-            VALUE "OriginalFilename", "plasoSmallTool.exe" "\0"
-            VALUE "ProductName", "plasoSmallTool" "\0"
+            VALUE "InternalName", "lxzSmallTool" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2026 liangzhaoliang95. All rights reserved." "\0"
+            VALUE "OriginalFilename", "lxzSmallTool.exe" "\0"
+            VALUE "ProductName", "lxzSmallTool" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

@@ -1,4 +1,4 @@
-# Plaso Small Tool
+# Lxz Small Tool
 
 > A cross-platform desktop utility suite for Windows and macOS (x86/ARM).
 
@@ -8,12 +8,12 @@
 
 ## Download
 
-Visit the [Releases](https://github.com/liangzhaoliang95/plasoSmallTool/releases) page to download the latest version:
+Visit the [Releases](https://github.com/liangzhaoliang95/lxzSmallTool/releases) page to download the latest version:
 
 | Platform | File |
 |----------|------|
-| macOS (arm64 / x86_64) | `plasoSmallTool_macos_arm64.dmg` |
-| Windows x64 | `plasoSmallTool_setup.exe` |
+| macOS (arm64 / x86_64) | `lxzSmallTool_macos_arm64.dmg` |
+| Windows x64 | `lxzSmallTool_setup.exe` |
 
 ## Screenshots
 
@@ -80,7 +80,7 @@ flutter build windows --release
 ### Verify macOS Universal Binary
 
 ```bash
-lipo -info build/macos/Build/Products/Release/plasoSmallTool.app/Contents/MacOS/plasoSmallTool
+lipo -info build/macos/Build/Products/Release/lxzSmallTool.app/Contents/MacOS/lxzSmallTool
 # Expected: Architectures in the fat file: arm64 x86_64
 ```
 

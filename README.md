@@ -1,4 +1,4 @@
-# 伯索小工具
+# lxz小工具
 
 > 跨平台桌面小工具集，支持 Windows 和 macOS（x86/ARM）。
 
@@ -8,12 +8,12 @@
 
 ## 下载
 
-前往 [Releases](https://github.com/liangzhaoliang95/plasoSmallTool/releases) 页面下载最新版本：
+前往 [Releases](https://github.com/liangzhaoliang95/lxzSmallTool/releases) 页面下载最新版本：
 
 | 平台 | 文件 |
 |------|------|
-| macOS (arm64 / x86_64) | `plasoSmallTool_macos_arm64.dmg` |
-| Windows x64 | `plasoSmallTool_setup.exe` |
+| macOS (arm64 / x86_64) | `lxzSmallTool_macos_arm64.dmg` |
+| Windows x64 | `lxzSmallTool_setup.exe` |
 
 ## 截图
 
@@ -80,7 +80,7 @@ flutter build windows --release
 ### 验证 macOS Universal Binary
 
 ```bash
-lipo -info build/macos/Build/Products/Release/plasoSmallTool.app/Contents/MacOS/plasoSmallTool
+lipo -info build/macos/Build/Products/Release/lxzSmallTool.app/Contents/MacOS/lxzSmallTool
 # 期望输出: Architectures in the fat file: arm64 x86_64
 ```
 

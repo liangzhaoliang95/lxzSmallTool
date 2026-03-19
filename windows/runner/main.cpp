@@ -41,7 +41,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
   if (!IsRunAsAdmin()) {
     int result = MessageBoxW(
         nullptr,
-        L"plasoSmallTool 需要管理员权限才能正常运行。\n\n点击「确定」以管理员身份重新启动。",
+        L"lxzSmallTool 需要管理员权限才能正常运行。\n\n点击「确定」以管理员身份重新启动。",
         L"需要管理员权限",
         MB_OKCANCEL | MB_ICONINFORMATION);
     if (result == IDOK) {
@@ -62,7 +62,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
   FlutterWindow window(project);
   Win32Window::Point origin(10, 10);
   Win32Window::Size size(1280, 720);
-  if (!window.Create(L"plasoSmallTool", origin, size)) {
+  if (!window.Create(L"lxzSmallTool", origin, size)) {
     return EXIT_FAILURE;
   }
   window.SetQuitOnClose(true);

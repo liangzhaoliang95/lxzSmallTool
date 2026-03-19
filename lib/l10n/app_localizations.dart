@@ -101,7 +101,7 @@ abstract class AppLocalizations {
   /// No description provided for @appTitle.
   ///
   /// In zh, this message translates to:
-  /// **'伯索小工具'**
+  /// **'lxz小工具'**
   String get appTitle;
 
   /// No description provided for @appSubtitle.
