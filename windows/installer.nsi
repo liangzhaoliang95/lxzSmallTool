@@ -1,8 +1,8 @@
-; plasoSmallTool NSIS 安装脚本
+; plasoSmallTool NSIS installer script
 Unicode True
 
 !define APP_NAME "plasoSmallTool"
-; APP_VERSION 由命令行 /DAPP_VERSION=x.x.x 传入
+; APP_VERSION is passed via command line: /DAPP_VERSION=x.x.x
 !define APP_PUBLISHER "plaso"
 !define APP_URL "https://github.com/liangzhaoliang95/plasoSmallTool"
 !define APP_EXE "plasoSmallTool.exe"
@@ -17,38 +17,47 @@ RequestExecutionLevel admin
 ShowInstDetails show
 ShowUnInstDetails show
 
-; 现代UI
+; Version info shown in UAC dialog
+VIProductVersion "${APP_VERSION}.0"
+VIAddVersionKey "ProductName" "${APP_NAME}"
+VIAddVersionKey "ProductVersion" "${APP_VERSION}"
+VIAddVersionKey "CompanyName" "${APP_PUBLISHER}"
+VIAddVersionKey "FileDescription" "${APP_NAME} Installer"
+VIAddVersionKey "FileVersion" "${APP_VERSION}"
+VIAddVersionKey "LegalCopyright" "Copyright (c) 2026 ${APP_PUBLISHER}"
+
+; Modern UI
 !include "MUI2.nsh"
 !define MUI_ABORTWARNING
 !define MUI_ICON "..\windows\runner\resources\app_icon.ico"
 !define MUI_UNICON "..\windows\runner\resources\app_icon.ico"
 
-; 安装页面
+; Install pages
 !insertmacro MUI_PAGE_WELCOME
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
 !insertmacro MUI_PAGE_FINISH
 
-; 卸载页面
+; Uninstall pages
 !insertmacro MUI_UNPAGE_CONFIRM
 !insertmacro MUI_UNPAGE_INSTFILES
 
 !insertmacro MUI_LANGUAGE "SimpChinese"
 
-Section "主程序" SecMain
+Section "MainSection" SecMain
   SectionIn RO
   SetOutPath "$INSTDIR"
   File /r "${BUILD_DIR}\*.*"
 
-  ; 创建开始菜单快捷方式
+  ; Start menu shortcuts
   CreateDirectory "$SMPROGRAMS\${APP_NAME}"
   CreateShortcut "$SMPROGRAMS\${APP_NAME}\${APP_NAME}.lnk" "$INSTDIR\${APP_EXE}"
-  CreateShortcut "$SMPROGRAMS\${APP_NAME}\卸载 ${APP_NAME}.lnk" "$INSTDIR\uninstall.exe"
+  CreateShortcut "$SMPROGRAMS\${APP_NAME}\Uninstall ${APP_NAME}.lnk" "$INSTDIR\uninstall.exe"
 
-  ; 创建桌面快捷方式
+  ; Desktop shortcut
   CreateShortcut "$DESKTOP\${APP_NAME}.lnk" "$INSTDIR\${APP_EXE}"
 
-  ; 写入注册表（用于控制面板卸载）
+  ; Registry entries for Control Panel uninstall
   WriteRegStr HKLM "${UNINSTALL_KEY}" "DisplayName" "${APP_NAME}"
   WriteRegStr HKLM "${UNINSTALL_KEY}" "DisplayVersion" "${APP_VERSION}"
   WriteRegStr HKLM "${UNINSTALL_KEY}" "Publisher" "${APP_PUBLISHER}"
