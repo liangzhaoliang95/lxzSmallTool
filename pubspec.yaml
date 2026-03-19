@@ -47,6 +47,7 @@ dependencies:
 
   # 本地存储
   shared_preferences: ^2.3.2
+  url_launcher: ^6.3.2
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +70,9 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+  assets:
+    - assets/app_icon.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

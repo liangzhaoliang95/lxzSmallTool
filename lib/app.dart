@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'core/theme/app_theme.dart';
 import 'features/dns/ui/dns_page.dart';
+import 'features/about/ui/about_page.dart';
 import 'shared/layout/app_shell.dart';
 
 class MyApp extends StatelessWidget {
@@ -24,6 +25,10 @@ class MyApp extends StatelessWidget {
               builder: (context, state) => const Scaffold(
                 body: Center(child: Text('设置页面（待实现）')),
               ),
+            ),
+            GoRoute(
+              path: '/about',
+              builder: (context, state) => const AboutPage(),
             ),
           ],
         ),

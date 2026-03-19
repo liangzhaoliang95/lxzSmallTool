@@ -89,11 +89,11 @@ class _AppShellState extends State<AppShell> {
                 label: 'DNS 工具',
                 onTap: () => context.go('/dns'),
               ),
-              // SidebarXItem(
-              //   icon: Icons.settings,
-              //   label: '设置',
-              //   onTap: () => context.go('/settings'),
-              // ),
+              SidebarXItem(
+                icon: Icons.info_outline,
+                label: '关于',
+                onTap: () => context.go('/about'),
+              ),
             ],
           ),
           Expanded(child: widget.child),
