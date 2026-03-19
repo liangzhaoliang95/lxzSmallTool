@@ -103,6 +103,57 @@ jobs:
     runs-on: ubuntu-latest
     if: always() && startsWith(github.ref, 'refs/tags/') && (needs.build-windows.result == 'success' || needs.build-macos.result == 'success')
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate Release Notes
+        id: notes
+        run: |
+          # 获取上一个 tag
+          PREV_TAG=$(git tag --sort=-creatordate | sed -n '2p')
+          CURRENT_TAG=${GITHUB_REF#refs/tags/}
+
+          if [ -z "$PREV_TAG" ]; then
+            COMMITS=$(git log --pretty=format:"- %s (%h)" HEAD)
+          else
+            COMMITS=$(git log --pretty=format:"- %s (%h)" "${PREV_TAG}..${CURRENT_TAG}")
+          fi
+
+          # 分类提交
+          FEATS=$(echo "$COMMITS" | grep -iE "^- (feat|feature)" || true)
+          FIXES=$(echo "$COMMITS" | grep -iE "^- fix" || true)
+          OTHERS=$(echo "$COMMITS" | grep -viE "^- (feat|feature|fix)" || true)
+
+          {
+            echo "body<<EOF"
+            echo "## 🚀 ${CURRENT_TAG} 更新内容"
+            echo ""
+            if [ -n "$FEATS" ]; then
+              echo "### ✨ 新功能"
+              echo "$FEATS"
+              echo ""
+            fi
+            if [ -n "$FIXES" ]; then
+              echo "### 🐛 修复"
+              echo "$FIXES"
+              echo ""
+            fi
+            if [ -n "$OTHERS" ]; then
+              echo "### 📦 其他"
+              echo "$OTHERS"
+              echo ""
+            fi
+            echo "---"
+            echo "### 📥 下载"
+            echo "| 平台 | 文件 |"
+            echo "|------|------|"
+            echo "| Windows | \`lxzSmallTool_setup.exe\` |"
+            echo "| macOS (Apple Silicon) | \`lxzSmallTool_macos_arm64.dmg\` |"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
       - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
@@ -111,6 +162,7 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
+          body: ${{ steps.notes.outputs.body }}
           files: |
             lxzSmallTool_setup.exe
             lxzSmallTool_macos_arm64.dmg
